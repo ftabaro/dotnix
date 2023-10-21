@@ -5,21 +5,24 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f9e74a76-d74b-4502-90e1-bc93ce72043d";
-      fsType = "ext4";
+    { device = "/dev/disk/by-uuid/dc016563-0f57-4308-b477-ad323d9f74f6";
+      fsType = "btrfs";
+      options = [ "subvol=@" ];
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0DC0-9587";
+  boot.initrd.luks.devices."luks-2e5293dc-1faa-4e05-9700-58da82fd9f9b".device = "/dev/disk/by-uuid/2e5293dc-1faa-4e05-9700-58da82fd9f9b";
+
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/FD88-3E0B";
       fsType = "vfat";
     };
 
@@ -30,7 +33,10 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp9s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp6s0.useDHCP = lib.mkDefault true;
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  # high-resolution display
+  # hardware.video.hidpi.enable = lib.mkDefault true;
 }
