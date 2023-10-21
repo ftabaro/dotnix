@@ -88,7 +88,6 @@
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     EDITOR = "vim";
-    GITLAB_MASTER_TOKEN = "glpat-dE3MTRxaCE6rpQ1RmFnh";
     BW_SESSION = "GE/TWOjcOqX/pUZrnJMid4I63LiFjhnwGxVlHktqoSfH/LDBD8mQ6rBxsZu7wU5c8u/TTXAfS8ENb17bwMovNg==";
   };
 
