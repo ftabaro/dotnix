@@ -10,15 +10,21 @@
     };
   };
 
-  outputs = {self, nixpkgs, inputs}: {
+  outputs = {self, nixpkgs, home-manager}: {
 
-    nixosConfigurations.norbert = inputs.nixpkgs.nixosSystem {
+    nixosConfigurations.norbert = nixpkgs.nixosSystem {
       system = "x86_64-linux";
       modules = [
         "./configuration.nix"
-        inputs.home-manager.nixosModules.home-manager 
+        home-manager.nixosModules.home-manager 
         {
-          home-manger.useGlobalPkgs = true;
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPkgs = true;
+          home-manager.users.francesc = {
+            imports = [
+              "./home.nix"
+            ];
+          }
         }
       ];
     };
