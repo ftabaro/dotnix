@@ -12,7 +12,7 @@
 
   outputs = inputs: {
 
-    nixosConfigurations.nixos = inputs.nixpkgs.nixosSystem {
+    nixosConfigurations.norbert = inputs.nixpkgs.nixosSystem {
       system = "x86_64-linux";
       modules = [
         "./configuration.nix"
