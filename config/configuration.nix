@@ -7,16 +7,18 @@
       ./hardware-configuration.nix
 
       # Home manager
-      <home-manager/nixos>
+      # <home-manager/nixos>
     ];
 
   # Bootloader.
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+  boot = with pkgs; {
+
+    kernelPackages = linuxPackages_latest;
+
     kernelParams = [ "quiet" "video=2560x1440" ];
 
-    #loader.systemd-boot.enable = true;
     loader = {
+
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = "/boot/efi";
@@ -27,7 +29,7 @@
         forceInstall = true;
         gfxmodeBios = "auto";
         useOSProber = true;
-        theme = pkgs.nixos-grub2-theme;
+        theme = nixos-grub2-theme;
         splashMode = "normal";
         gfxpayloadEfi = "keep";
         gfxmodeEfi = "2560x1440";
@@ -38,14 +40,15 @@
         efiSupport = true;
         fsIdentifier = "uuid";
         configurationLimit = 1;
+        timeout = 10;
       };
     };
 
-    # Setup keyfile
     initrd = {
       systemd.enable = true;
       kernelModules = [ "amdgpu" ];
     };
+
     plymouth = {
       enable = true;
       theme = "bgrt";
@@ -107,20 +110,15 @@
       vim
       wget
       curl
-      htop
-      unzip
       zip
+      unzip
       unrar
       xz
       bzip2
       pbzip2
       gawk
       git
-      gparted
       jq
-      gnomeExtensions.dash-to-dock
-      gnome.gnome-tweaks
-      gnome.file-roller
       killall
       lm_sensors
       openconnect-sso
@@ -141,30 +139,37 @@
     stateVersion = "23.05"; # Don't change this !
     autoUpgrade = {
       enable = true;
-      allowReboot = true;
+      allowReboot = false;
       operation = "switch";
     };
   };
 
   hardware = {
+
     opengl = {
       extraPackages = with pkgs; [
         rocm-opencl-icd
         amdvlk
       ];
       # To enable Vulkan support for 32-bit applications, also add:
-      extraPackages32 = with pkgs; [
-        driversi686Linux.amdvlk
+      extraPackages32 = with pkgs.driversi686Linux; [
+        amdvlk
       ];
     };
+
     logitech.wireless.enable = true;
+
+    pulseaudio.enable = false;
   };
 
 
-  # Gnome
+  sound.enable = true;
+
   services = {
     fstrim.enable = true;
+
     gnome.games.enable = false;
+
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
@@ -175,7 +180,18 @@
         };
       };
     };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+
   };
+
+  security.rtkit.enable = true;
 
   # Nix experimental features
   nix = {
@@ -184,6 +200,7 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+
     settings = {
       auto-optimise-store = true;
       experimental-features = [
@@ -193,7 +210,6 @@
       allowed-users = [
         "@wheel"
       ];
-
     };
   };
 
@@ -204,7 +220,6 @@
           "FiraCode"
           "DroidSansMono"
           "Hack"
-          "UbuntuMono"
         ];
       })
       ibm-plex
