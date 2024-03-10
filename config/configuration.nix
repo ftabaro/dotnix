@@ -4,7 +4,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      # ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
 
       # Home manager
       # <home-manager/nixos>
@@ -39,9 +39,10 @@
         extraGrubInstallArgs = [ ];
         efiSupport = true;
         fsIdentifier = "uuid";
-        configurationLimit = 1;
-        timeout = 10;
+        configurationLimit = 1;  
       };
+
+      timeout = 10;
     };
 
     initrd = {
@@ -53,6 +54,7 @@
       enable = true;
       theme = "bgrt";
     };
+
   };
 
   networking = {
@@ -87,7 +89,10 @@
     francesco = {
       description = "Francesco Tabaro";
       isNormalUser = true;
-      extraGroups = [ "networkmanager" "wheel" ];
+      extraGroups = [ 
+        "networkmanager" 
+        "wheel" 
+      ];
     };
   };
 

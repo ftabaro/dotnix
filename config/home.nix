@@ -73,7 +73,7 @@ with pkgs; {
       #   org.gradle.console=verbose
       #   org.gradle.daemon.idletimeout=3600000
       # '';
-      ".face".source = ./assets/face.jpg;
+      # ".face".source = ./assets/face.jpg;
     };
 
     sessionVariables = {
