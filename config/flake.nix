@@ -10,13 +10,14 @@
     };
   };
 
-  outputs = { self, nixpkgs }: {
+  outputs = inputs: {
 
     nixosConfigurations.nixos = inputs.nixpkgs.nixosSystem {
       system = "x86_64-linux";
       modules = [
         "./configuration.nix"
-        inputs.home-manager.nixosModules.home-manager {
+        inputs.home-manager.nixosModules.home-manager 
+        {
           home-manger.useGlobalPkgs = true;
         }
       ];
