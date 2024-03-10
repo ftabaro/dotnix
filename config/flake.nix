@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
     home-manager = {
-      url = "github:nix-community/home-manager/archive/release-23.11.tar.gz";
+      url = "github:nix-community/home-manager/release-23.11";
 
       inputs.nixpkgs.follows = "nixpkgs";
     };
