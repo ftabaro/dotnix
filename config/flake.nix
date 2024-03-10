@@ -15,14 +15,14 @@
     nixosConfigurations.norbert = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        "./configuration.nix"
+        ./configuration.nix
         home-manager.nixosModules.home-manager 
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPkgs = true;
           home-manager.users.francesc = {
             imports = [
-              "./home.nix"
+              ./home.nix
             ];
           };
         }
