@@ -6,7 +6,7 @@
     home-manager = {
       url = "github:nix-community/home-manager/archive/release-23.11.tar.gz";
 
-      inputs.nixpkgs.follow = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
