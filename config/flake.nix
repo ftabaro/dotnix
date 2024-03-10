@@ -10,7 +10,7 @@
     };
   };
 
-  outputs = inputs: {
+  outputs = {self, nixpkgs, inputs}: {
 
     nixosConfigurations.norbert = inputs.nixpkgs.nixosSystem {
       system = "x86_64-linux";
