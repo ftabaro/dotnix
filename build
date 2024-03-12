@@ -1,13 +1,3 @@
 #!/usr/bin/env bash
 
-sudo rm /etc/nixos/configuration.nix
-sudo cp config/configuration.nix /etc/nixos/configuration.nix
-
-rm ~/.config/home-manager/home.nix
-cp config/home.nix ~/.config/home-manager/home.nix
-
-sudo nixos-rebuild switch
-sleep 1
-
-home-manager build
-home-manager switch -b backup
+sudo nixos-rebuild switch --flake .#norbert --impure
