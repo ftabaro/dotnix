@@ -17,13 +17,10 @@
         inherit system;
         config.allowUnfree = true;
       };
-      lib = import nixpkgs {
-        inherit lib;
-      };
     in
     {
       nixosConfigurations = {
-        norbert = lib.nixosSystem {
+        norbert = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./configuration.nix

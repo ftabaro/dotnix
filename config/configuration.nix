@@ -101,7 +101,7 @@
       allowUnfree = true;
     };
     overlays = [
-      (import "${builtins.fetchTarball https://github.com/ThinkChaos/openconnect-sso/archive/refs/heads/fix/nix-flake.tar.gz}/overlay.nix")
+      (import "${builtins.fetchTarball "https://github.com/ThinkChaos/openconnect-sso/archive/refs/heads/fix/nix-flake.tar.gz"}/overlay.nix")
     ];
   };
 

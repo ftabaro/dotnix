@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo nixos-rebuild switch --flake .#norbert --impure
+sudo nixos-rebuild switch --flake ./config/flake.nix#norbert --impure
