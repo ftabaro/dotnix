@@ -39,7 +39,7 @@
         extraGrubInstallArgs = [ ];
         efiSupport = true;
         fsIdentifier = "uuid";
-        configurationLimit = 1;  
+        configurationLimit = 1;
       };
 
       timeout = 10;
@@ -89,9 +89,9 @@
     francesco = {
       description = "Francesco Tabaro";
       isNormalUser = true;
-      extraGroups = [ 
-        "networkmanager" 
-        "wheel" 
+      extraGroups = [
+        "networkmanager"
+        "wheel"
       ];
     };
   };
