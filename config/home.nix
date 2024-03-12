@@ -51,6 +51,7 @@ with pkgs; {
       gnomeExtensions.dash-to-dock
       gnome.gnome-tweaks
       gnome.file-roller
+      virt-manager
     ];
 
     # This value determines the Home Manager release that your configuration is
@@ -74,6 +75,11 @@ with pkgs; {
       #   org.gradle.daemon.idletimeout=3600000
       # '';
       # ".face".source = ./assets/face.jpg;
+      ".config/libvirt/qemu.conf".text = ''
+        # Adapted from /var/lib/libvirt/qemu.conf
+        # Note that AAVMF and OVMF are for Aarch64 and x86 respectively
+        nvram = [ "/run/libvirt/nix-ovmf/AAVMF_CODE.fd:/run/libvirt/nix-ovmf/AAVMF_VARS.fd", "/run/libvirt/nix-ovmf/OVMF_CODE.fd:/run/libvirt/nix-ovmf/OVMF_VARS.fd" ]
+      '';
     };
 
     sessionVariables = {

@@ -6,8 +6,6 @@
       # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
 
-      # Home manager
-      # <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -92,6 +90,7 @@
       extraGroups = [
         "networkmanager"
         "wheel"
+        "libvirtd"
       ];
     };
   };
@@ -239,6 +238,25 @@
         emoji = [ "Noto Color Emoji" ];
       };
       antialias = true;
+    };
+  };
+
+  # enable virtualisation
+  virtualisation.libvirtd = with pkgs; {
+    enable = true;
+    qemu = {
+      package = qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+      ovmf = {
+        enable = true;
+        packages = [
+          (OVMF.override {
+            secureBoot = true;
+            tpmSupport = true;
+          }).fd
+        ];
+      };
     };
   };
 }
