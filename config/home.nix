@@ -194,7 +194,7 @@ with pkgs; {
       enableCompletion = true;
       enableVteIntegration = true;
       bashrcExtra = ''
-        source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+        # source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
       
         bind 'set show-all-if-ambiguous on'
         bind 'TAB:menu-complete'
