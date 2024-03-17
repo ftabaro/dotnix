@@ -174,29 +174,80 @@
   services = {
     fstrim.enable = true;
 
-    gnome.games.enable = false;
+    gnome = {
+      games.enable = false;
+      core-os-services.enable = true;
+      core-shell.enable = true;
+      core-utilities.enable = true;
+      gnome-keyring.enable = true;
+      gnome-settings-daemon.enable = true;
+    };
+
+    # power-profiles-daemon = true;
+
+    system-config-printer.enable = true;
+    printing = {
+      cups-pdf.enable = true;
+      enable = true;
+    };
+
+    thermald.enable = true;
+
+    hardware.bolt.enable = true;
+
+    gvfs.enable = true;
+
+    fwupd.enable = true;
+
+    # acpid.enable = true;
+
+    blueman.enable = true;
+
+    udev.enable = true;
+
+    udisks2.enable = true;
+
+    locate = {
+      enable = true;
+      interval = "daily 12:00";
+      pruneBindMounts = true;
+    };
+
+    logrotate.enable = true;
+
+    clamav = {
+      daemon = {
+        enable = true;
+        # settings = {};
+      };
+      updater = {
+        enable = true;
+        frequency = 1; # number of checks per day
+        # settings = {};
+      };
+    };
 
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
       desktopManager = {
         plasma5 = {
-          enable = true;
+          enable = false;
         };
         plasma6 = {
           enable = false;
         };
         gnome = {
-          enable = false;
+          enable = true;
         };
       };
       displayManager = {
-        defaultSession = "plasmawayland";
+        defaultSession = "gnome";
         gdm = {
-          enable = false;
+          enable = true;
         };
         sddm = {
-          enable = true;
+          enable = false;
           wayland.enable = true;
         };
       };
@@ -255,6 +306,14 @@
         emoji = [ "Noto Color Emoji" ];
       };
       antialias = true;
+      hinting = {
+        enable = true;
+        style = "full";
+      };
+      subpixel = {
+        rgba = "rgb";
+        lcdfilter = "default";
+      };
     };
   };
 
