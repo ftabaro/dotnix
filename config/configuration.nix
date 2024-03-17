@@ -109,6 +109,7 @@
       AMD_VULKAN_ICD = "RADV";
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
+      NIX_PROFILES = "${pkgs.lib.concatStringsSep " " (pkgs.lib.reverseList config.environment.profiles)}";
     };
     systemPackages = with pkgs; [
       vim
@@ -137,6 +138,7 @@
       enable = true;
       enableSSHSupport = true;
     };
+    dconf.enable = true;
   };
 
   system = {
@@ -177,10 +179,25 @@
     xserver = {
       enable = true;
       videoDrivers = [ "amdgpu" ];
-      desktopManager.gnome.enable = true;
-      displayManager = {
-        gdm = {
+      desktopManager = {
+        plasma5 = {
           enable = true;
+        };
+        plasma6 = {
+          enable = false;
+        };
+        gnome = {
+          enable = false;
+        };
+      };
+      displayManager = {
+        defaultSession = "plasmawayland";
+        gdm = {
+          enable = false;
+        };
+        sddm = {
+          enable = true;
+          wayland.enable = true;
         };
       };
     };
@@ -258,5 +275,11 @@
         ];
       };
     };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita";
   };
 }
