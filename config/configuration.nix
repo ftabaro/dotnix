@@ -193,7 +193,7 @@
       core-utilities.enable = true;
       gnome-keyring.enable = true;
       gnome-settings-daemon.enable = true;
-      gnome.sushi.enable = true;
+      sushi.enable = true;
     };
 
     # power-profiles-daemon = true;
