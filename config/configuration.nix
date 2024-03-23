@@ -128,6 +128,18 @@
       lm_sensors
       openconnect-sso
     ];
+    gnome.excludePackages = (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ]) ++ (with pkgs.gnome; [
+      cheese
+      gnome-music
+      epiphany
+      geary
+      yelp
+      gnome-contacts
+      gnome-initial-setup
+    ])
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -181,6 +193,7 @@
       core-utilities.enable = true;
       gnome-keyring.enable = true;
       gnome-settings-daemon.enable = true;
+      gnome.sushi.enable = true;
     };
 
     # power-profiles-daemon = true;
