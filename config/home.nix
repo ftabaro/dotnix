@@ -120,6 +120,17 @@ with pkgs; {
       name = "Adwaita";
       package = gnome.adwaita-icon-theme;
     };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-font-name="Noto Sans 12"
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-font-name="Noto Sans 12"
+      '';
+    };
+
   };
 
   # Let Home Manager install and manage itself.
@@ -202,16 +213,16 @@ with pkgs; {
       bashrcExtra = ''
         # source ~/.nix-profile/etc/profile.d/hm-session-vars.sh
       
-        # bind 'set show-all-if-ambiguous on'
-        # bind 'TAB:menu-complete'
-        # bind 'set colored-completion-prefix on'
-        # bind 'set blink-matching-paren on'
-        # bind 'set colored-stats on'
-        # bind 'set expand-tilde on'
-        # bind 'set mark-directories on'
-        # bind 'set mark-symlinked-directories on'
-        # bind 'set visible-stats on'
-        # bind 'set menu-complete-display-prefix on'
+        bind 'set show-all-if-ambiguous on'
+        bind 'TAB:menu-complete'
+        bind 'set colored-completion-prefix on'
+        bind 'set blink-matching-paren on'
+        bind 'set colored-stats on'
+        bind 'set expand-tilde on'
+        bind 'set mark-directories on'
+        bind 'set mark-symlinked-directories on'
+        bind 'set visible-stats on'
+        bind 'set menu-complete-display-prefix on'
       '';
       historyControl = [ "erasedups" ];
       historyFile = "~/.bash_history";
