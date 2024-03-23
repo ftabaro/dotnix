@@ -38,6 +38,10 @@
             }
           ];
         };
+        pc-boulard07 = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [];
+        };
       };
     };
 }
