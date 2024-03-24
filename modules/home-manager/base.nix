@@ -46,60 +46,58 @@ with pkgs; {
       timestamp = "date +%d-%m-%y-%H%M";
       ls = "lsd";
       grep = "grep --color=auto";
-      cat = "bat"
-        };
+      cat = "bat";
+    };
+  };
 
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
+    style = {
+      name = "adwaita";
+      package = adwaita-qt;
+    };
+  };
 
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Adwaita";
+      package = gnome.gnome-themes-extra;
+    };
+    iconTheme = {
+      name = "Adwaita";
+      package = gnome.adwaita-icon-theme;
+    };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-font-name="Noto Sans 12"
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-font-name="Noto Sans 12"
+      '';
     };
 
-    qt = {
-      enable = true;
-      platformTheme = "gtk";
-      style = {
-        name = "adwaita";
-        package = adwaita-qt;
-      };
-    };
+  };
 
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Adwaita";
-        package = gnome.gnome-themes-extra;
-      };
-      iconTheme = {
-        name = "Adwaita";
-        package = gnome.adwaita-icon-theme;
-      };
-      gtk3.extraConfig = {
-        Settings = ''
-          gtk-font-name="Noto Sans 12"
-        '';
-      };
-      gtk4.extraConfig = {
-        Settings = ''
-          gtk-font-name="Noto Sans 12"
-        '';
-      };
-
-    };
-
-    programs = {
-      home-manager.enable = true;
-      mpv.enable = true;
-      bat.enable = true;
-      xdg = {
-        userDirs = {
-          enable = true;
-          createDirectories = true;
-        };
-      };
-      git = {
+  programs = {
+    home-manager.enable = true;
+    mpv.enable = true;
+    bat.enable = true;
+    xdg = {
+      userDirs = {
         enable = true;
-        userName = "Francesco Tabaro";
-        userEmail = "francesco.tabaro@gmail.com";
+        createDirectories = true;
       };
     };
+    git = {
+      enable = true;
+      userName = "Francesco Tabaro";
+      userEmail = "francesco.tabaro@gmail.com";
+    };
+  };
 
 
-  }
+}
