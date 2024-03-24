@@ -1,6 +1,9 @@
-{ pkgs, ... }:
+{ inputs, config, pkgs, ... }:
+
 let
-  base = import ./../modules/nixos/base.nix { };
+  baseConfig = import ./../modules/nixos/base.nix { 
+    inherit inputs config pkgs;
+};
 in
 {
   # enable virtualisation
@@ -22,5 +25,5 @@ in
     };
   };
 
-  users.users.francesco.extraGroups = base.users.users.francesco.extraGroups ++ [ "libvirtd" ];
+  users.users.francesco.extraGroups = baseConfig.users.users.francesco.extraGroups ++ [ "libvirtd" ];
 }

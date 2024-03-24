@@ -7,8 +7,13 @@
     inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
-    ./../../modules/nixos/amdgpu.nix
+
     ./../../modules/nixos/base.nix
+    ./../../modules/nixos/packages.nix
+    ./../../modules/nixos/amdgpu.nix
+    ./../../modules/nixos/desktop.nix
+    ./../../modules/nixos/gnome.nix
+    ./../../modules/nixos/fonts.nix
 
     ./../../services/libvirtd.nix
     ./../../services/clamav.nix

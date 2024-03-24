@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ inputs, config, pkgs, ... }:
+
 let
-  base = import ./base.nix { };
+  baseConfig = import ./base.nix { inherit inputs config pkgs; };
 in
 {
 
-  boot.kernelParams = base.boot.kernelParams ++ [ "video=2560x1440" ];
+  boot.kernelParams = baseConfig.boot.kernelParams ++ [ "video=2560x1440" ];
 
   environment.variables = {
     AMD_VULKAN_ICD = "RADV";
