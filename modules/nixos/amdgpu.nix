@@ -1,6 +1,10 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }:
+let
+  base = import ./base.nix { };
+in
+{
 
-  boot.kernelParams = config.boot.kernelParams ++ [ "video=2560x1440" ];
+  boot.kernelParams = base.boot.kernelParams ++ [ "video=2560x1440" ];
 
   environment.variables = {
     AMD_VULKAN_ICD = "RADV";

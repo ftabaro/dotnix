@@ -1,4 +1,8 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }:
+let
+  base = import ./../modules/nixos/base.nix { };
+in
+{
   # enable virtualisation
   virtualisation.libvirtd = with pkgs; {
     enable = true;
@@ -17,5 +21,6 @@
       };
     };
   };
-  users.users.francesco.extraGroups = config.users.users.francesco.extraGroups ++ [ "libvirtd" ];
+
+  users.users.francesco.extraGroups = base.users.users.francesco.extraGroups ++ [ "libvirtd" ];
 }

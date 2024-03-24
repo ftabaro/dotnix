@@ -5,9 +5,7 @@
 }: {
 
   imports = [
-    ./desktop.nix
-    ./gnome.nix
-    ./fonts.nix
+
   ];
 
   # Bootloader.
@@ -15,7 +13,7 @@
 
     kernelPackages = linuxPackages_latest;
 
-    kernelParams = [ "quiet" ];
+    kernelParams = [ "quiet" "video=2560x1440" ];
 
     loader = {
 
@@ -56,7 +54,7 @@
 
   };
 
-  users.mutableUsers = false;
+  # users.mutableUsers = false;
   users.users = {
     francesco = {
       description = "Francesco Tabaro";
@@ -64,7 +62,6 @@
       extraGroups = [
         "networkmanager"
         "wheel"
-
       ];
       shell = pkgs.bash;
     };
