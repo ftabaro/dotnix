@@ -24,7 +24,7 @@
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
-      {
+      
       formatter = forAllSystems (system: nixpkgs.legacyPacakges.${system}.alejandra);
 
       # norbert
