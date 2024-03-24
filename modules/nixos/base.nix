@@ -148,11 +148,10 @@
       jack.enable = true;
     };
 
-  };
+    xserver = {
+      enable = true;
 
-  xserver = {
-    enable = true;
-
+    };
   };
 
   hardware.pulseaudio.enable = false;
