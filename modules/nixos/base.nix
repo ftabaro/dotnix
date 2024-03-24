@@ -117,28 +117,29 @@
 
   services = {
     fstrim.enable = true;
-  };
 
-  sound.enable = true;
 
-  thermald.enable = true;
+    sound.enable = true;
 
-  gvfs.enable = true;
+    thermald.enable = true;
 
-  fwupd.enable = true;
+    gvfs.enable = true;
 
-  blueman.enable = true;
+    fwupd.enable = true;
 
-  udev.enable = true;
+    blueman.enable = true;
 
-  udisks2.enable = true;
+    udev.enable = true;
 
-  logrotate.enable = true;
+    udisks2.enable = true;
 
-  locate = {
-    enable = true;
-    interval = "daily 12:00";
-    pruneBindMounts = true;
+    logrotate.enable = true;
+
+    locate = {
+      enable = true;
+      interval = "daily 12:00";
+      pruneBindMounts = true;
+    };
   };
 
   xserver = {
