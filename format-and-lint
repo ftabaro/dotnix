@@ -2,6 +2,6 @@
 
 set -e 
 
-nixpkgs-fmt config/
+nixpkgs-fmt ./
 
-statix check -o stderr config/
+statix check -o stderr ./
