@@ -9,34 +9,38 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd.availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "sd_mod" ];
+    initrd.kernelModules = [ ];
+    extraModulePackages = [ ];
+    # kernelModules = ["kvm-amd"];
+  };
 
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-uuid/1c9593a7-d5b4-4ba1-8ec3-3e2e54316afd";
-      fsType = "ext4";
-    };
+  fileSystems = {
+    "/" =
+      {
+        device = "/dev/disk/by-uuid/1c9593a7-d5b4-4ba1-8ec3-3e2e54316afd";
+        fsType = "ext4";
+      };
 
-  fileSystems."/boot/efi" =
-    {
-      device = "/dev/disk/by-uuid/FD88-3E0B";
-      fsType = "vfat";
-    };
+    "/boot/efi" =
+      {
+        device = "/dev/disk/by-uuid/FD88-3E0B";
+        fsType = "vfat";
+      };
 
-  fileSystems."/home/francesco/Projects" =
-    {
-      device = "/dev/disk/by-uuid/1fbfbde4-f791-4b71-aa39-9d410548be1b";
-      fsType = "ext4";
-    };
+    "/home/francesco/Projects" =
+      {
+        device = "/dev/disk/by-uuid/1fbfbde4-f791-4b71-aa39-9d410548be1b";
+        fsType = "ext4";
+      };
 
-  fileSystems."/home/francesco/Downloads" =
-    {
-      device = "/dev/disk/by-uuid/d2f07bad-d04c-4d8b-996e-d13d043838c8";
-      fsType = "ext4";
-    };
+    "/home/francesco/Downloads" =
+      {
+        device = "/dev/disk/by-uuid/d2f07bad-d04c-4d8b-996e-d13d043838c8";
+        fsType = "ext4";
+      };
+  };
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/48844093-6d6e-4acd-85e7-22a008df987a"; }];
