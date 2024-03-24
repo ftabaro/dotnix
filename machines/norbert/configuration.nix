@@ -27,6 +27,6 @@
           ./../../modules/home-manager/kitty.nix
           ./../../modules/home-manager/thunderbird.nix
         ];
-      }
-        networking.hostName = "norbert";
+      };
+    networking.hostName = "norbert";
   }
