@@ -86,12 +86,6 @@ with pkgs; {
     home-manager.enable = true;
     mpv.enable = true;
     bat.enable = true;
-    xdg = {
-      userDirs = {
-        enable = true;
-        createDirectories = true;
-      };
-    };
     git = {
       enable = true;
       userName = "Francesco Tabaro";
@@ -99,5 +93,10 @@ with pkgs; {
     };
   };
 
-
+  xdg = {
+    userDirs = {
+      enable = true;
+      createDirectories = true;
+    };
+  };
 }
