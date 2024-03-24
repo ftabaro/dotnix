@@ -29,5 +29,5 @@
         ];
       };
     networking.hostName = "norbert";
-  }
+  };
 }
