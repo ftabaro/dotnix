@@ -1,6 +1,6 @@
 {
   system-config-printer.enable = true;
-  printing = {
+  services.printing = {
     cups-pdf.enable = true;
     enable = true;
   };
