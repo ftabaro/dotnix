@@ -1,4 +1,4 @@
-{ pkgs, ... }: with pkgs: {
+{ pkgs, ... }: with pkgs; {
   programs.vscode = {
     enable = true;
     enableExtensionUpdateCheck = true;
