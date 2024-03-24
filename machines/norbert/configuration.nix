@@ -30,3 +30,4 @@
       };
     networking.hostName = "norbert";
   }
+}
