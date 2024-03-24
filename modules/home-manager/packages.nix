@@ -1,4 +1,4 @@
-{ pkgs, ... }: with pkgs: {
+{ pkgs, ... }: with pkgs; {
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
