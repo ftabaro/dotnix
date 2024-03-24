@@ -3,7 +3,7 @@
 , ...
 }: {
   imports = [
-    
+
     inputs.home-manager.nixosModules.home-manager
 
     ./hardware-configuration.nix
@@ -19,7 +19,8 @@
     extraSpecialArgs = { inherit inputs outputs; };
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.francesco =
+    users = {
+      francesco =
       {
         imports = [
           ./../../modules/home-manager/base.nix
@@ -31,6 +32,9 @@
           ./../../modules/home-manager/thunderbird.nix
         ];
       };
-    networking.hostName = "norbert";
+    };
   };
+  
+  networking.hostName = "norbert";
+
 }
