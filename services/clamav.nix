@@ -1,5 +1,5 @@
 {
-  clamav = {
+  services.clamav = {
     daemon = {
       enable = true;
       # settings = {};
