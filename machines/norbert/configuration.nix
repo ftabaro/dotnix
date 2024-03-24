@@ -3,6 +3,9 @@
 , ...
 }: {
   imports = [
+    
+    inputs.home-manager.nixosModules.home-manager
+
     ./hardware-configuration.nix
     ./../../modules/nixos/amdgpu.nix
     ./../../modules/nixos/base.nix
