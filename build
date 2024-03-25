@@ -8,4 +8,6 @@ if [ -f /home/francesco/.gtkrc-2.0 ]; then
   rm -v /home/francesco/.gtkrc-2.0
 fi
 
-sudo nixos-rebuild switch --flake ./#norbert $@
+HOST=${1:-norbert}
+
+sudo nixos-rebuild switch --flake ./#${HOST}
