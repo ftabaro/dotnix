@@ -8,6 +8,9 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    openconnect-sso.url = "github:ThinkChaos/openconnect-sso/fix/nix-flake";
+
   };
 
   outputs =
@@ -24,8 +27,6 @@
       forAllSystems = nixpkgs.lib.genAttrs systems;
     in
     {
-
-      formatter = forAllSystems (system: nixpkgs.legacyPacakges.${system}.alejandra);
 
       # norbert
       nixosConfigurations = {

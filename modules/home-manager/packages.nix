@@ -1,4 +1,4 @@
-{ pkgs, ... }: with pkgs; {
+{ pkgs, inputs, ... }: with pkgs; {
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -17,11 +17,12 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     lsd
+    bat
     libreoffice-fresh
     firefox-wayland
     thunderbird
     nixpkgs-fmt
-    sublime3
+    # sublime3
     bitwarden
     bitwarden-cli
     owncloud-client
@@ -42,8 +43,10 @@
     htop
     gparted
     gnomeExtensions.dash-to-dock
-    gnome.gnome-tweaks
-    gnome.file-roller
     virt-manager
-  ];
+    inputs.openconnect-sso
+  ] ++ (with pkgs.gnome; [
+    gnome-tweaks
+    file-roller
+  ]);
 }

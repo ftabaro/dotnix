@@ -14,6 +14,5 @@
     jq
     killall
     lm_sensors
-    openconnect-sso
   ];
 }
