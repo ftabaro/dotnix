@@ -33,4 +33,5 @@
     platformTheme = "gnome";
     style = "adwaita";
   };
+  services.avahi.enable = false;
 }
