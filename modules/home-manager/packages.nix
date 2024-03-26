@@ -44,7 +44,7 @@
     gparted
     gnomeExtensions.dash-to-dock
     virt-manager
-    inputs.openconnect-sso
+    inputs.openconnect-sso.packages.${pkgs.stdenv.hostPlatform.system}.default
   ] ++ (with pkgs.gnome; [
     gnome-tweaks
     file-roller

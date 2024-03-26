@@ -9,7 +9,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    openconnect-sso.url = "github:ThinkChaos/openconnect-sso/fix/nix-flake";
+    systems.url = "github:nix-systems/x86_64-linux";
+
+    flake-utils.url = "github:numtide/flake-utils";
+
+    flake-utils.inputs.systems.follows = "systems";
+
+    openconnect-sso = {
+      url = "github:ThinkChaos/openconnect-sso/fix/nix-flake";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
 
   };
 
