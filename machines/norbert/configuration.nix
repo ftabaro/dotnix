@@ -31,10 +31,12 @@
             ./../../modules/home-manager/base.nix
             ./../../modules/home-manager/packages.nix
 
+            #./../../modules/home-manager/dconf.nix
             ./../../modules/home-manager/bash.nix
             ./../../modules/home-manager/vscode.nix
             ./../../modules/home-manager/kitty.nix
             ./../../modules/home-manager/thunderbird.nix
+
           ];
         };
     };

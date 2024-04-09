@@ -3,26 +3,7 @@
 , pkgs
 , ...
 }:
-# let
 
-#   # poetry2nix = inputs.poetry2nix.overlays.default;
-#   openconnect-sso-overlay = self: super: {
-#     openconnect-sso = super.python311Packages.buildPythonPackage
-#       rec {
-#         pname = "openconnect_sso";
-#         version = "0.8.1";
-#         src = super.fetchPypi {
-#           inherit pname version;
-#           sha256 = "1eb79ba5de68c9f81d2f3a82e86d8247fd0c6ad02f4f381a5617ce8e1b697ce3";
-#         };
-#         buildInputs = with super.python311Packages; [
-#           poetry-core
-#         ];
-#       };
-#   };
-
-
-# in
 {
 
   imports = [
@@ -40,7 +21,7 @@
 
       efi = {
         canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot/efi";
+        efiSysMountPoint = "/boot";
       };
 
       grub = {
@@ -151,7 +132,7 @@
 
     locate = {
       enable = true;
-      interval = "daily 12:00";
+      interval = "12:00";
       pruneBindMounts = true;
     };
 

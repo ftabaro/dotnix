@@ -45,6 +45,7 @@
     gnomeExtensions.dash-to-dock
     virt-manager
     inputs.openconnect-sso.packages.${pkgs.stdenv.hostPlatform.system}.default
+    dconf2nix
   ] ++ (with pkgs.gnome; [
     gnome-tweaks
     file-roller

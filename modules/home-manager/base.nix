@@ -1,6 +1,7 @@
-{ config, pkgs, osConfig, ... }:
+{ config, pkgs, ... }:
+with pkgs;
+{
 
-with pkgs; {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home = {
@@ -28,7 +29,7 @@ with pkgs; {
       #   org.gradle.daemon.idletimeout=3600000
       # '';
       # ".face".source = ./assets/face.jpg;
-      ".config/libvirt/qemu.conf".text = ''
+      ".config/libvirt/qemu.conf". text = ''
         # Adapted from /var/lib/libvirt/qemu.conf
         # Note that AAVMF and OVMF are for Aarch64 and x86 respectively
         nvram = [ "/run/libvirt/nix-ovmf/AAVMF_CODE.fd:/run/libvirt/nix-ovmf/AAVMF_VARS.fd", "/run/libvirt/nix-ovmf/OVMF_CODE.fd:/run/libvirt/nix-ovmf/OVMF_VARS.fd" ]
@@ -69,17 +70,6 @@ with pkgs; {
       name = "Adwaita";
       package = gnome.adwaita-icon-theme;
     };
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-font-name="Noto Sans 12"
-      '';
-    };
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-font-name="Noto Sans 12"
-      '';
-    };
-
   };
 
   programs = {
@@ -99,4 +89,4 @@ with pkgs; {
       createDirectories = true;
     };
   };
-}
+}  
